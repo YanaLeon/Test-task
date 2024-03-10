@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Test-task/static/css/main.71dce974.css",
-    "main.js": "/Test-task/static/js/main.e35e5617.js",
-    "static/js/453.63f6b601.chunk.js": "/Test-task/static/js/453.63f6b601.chunk.js",
-    "static/media/Uvelir.jpeg": "/Test-task/static/media/Uvelir.a1690ea64a4426453a76.jpeg",
-    "index.html": "/Test-task/index.html",
-    "main.71dce974.css.map": "/Test-task/static/css/main.71dce974.css.map",
-    "main.e35e5617.js.map": "/Test-task/static/js/main.e35e5617.js.map",
-    "453.63f6b601.chunk.js.map": "/Test-task/static/js/453.63f6b601.chunk.js.map"
+    "main.css": "/Test-task/Test-task/static/css/main.5a8c6f6c.css",
+    "main.js": "/Test-task/Test-task/static/js/main.063e3a82.js",
+    "static/js/453.63f6b601.chunk.js": "/Test-task/Test-task/static/js/453.63f6b601.chunk.js",
+    "static/media/Uvelir.jpeg": "/Test-task/Test-task/static/media/Uvelir.a1690ea64a4426453a76.jpeg",
+    "index.html": "/Test-task/Test-task/index.html",
+    "main.5a8c6f6c.css.map": "/Test-task/Test-task/static/css/main.5a8c6f6c.css.map",
+    "main.063e3a82.js.map": "/Test-task/Test-task/static/js/main.063e3a82.js.map",
+    "453.63f6b601.chunk.js.map": "/Test-task/Test-task/static/js/453.63f6b601.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.71dce974.css",
-    "static/js/main.e35e5617.js"
+    "static/css/main.5a8c6f6c.css",
+    "static/js/main.063e3a82.js"
   ]
 }
