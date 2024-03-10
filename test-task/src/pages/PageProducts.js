@@ -1,0 +1,24 @@
+import React, { useEffect } from 'react';
+
+import Main from '../components/Main';
+import Filter from '../components/Filter';
+
+
+import { useNavigate } from "react-router-dom";
+
+export const PageProducts = () => {
+    let navigate = useNavigate();
+    let uri = "/:1";
+
+    useEffect(() => {
+
+        navigate(uri);
+
+    }, []);
+
+          
+  return (
+    <Filter/>
+  );
+    
+};
