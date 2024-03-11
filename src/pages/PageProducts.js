@@ -13,6 +13,7 @@ export const PageProducts = () => {
     useEffect(() => {
 
         navigate(uri);
+        navigate("/:1");
 
     }, []);
 
