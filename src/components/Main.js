@@ -34,7 +34,7 @@ const Main = (props) => {
             if (idProductsCheck === "Нет элементов, удовлетворяющих запросу") {
                 setProducts(idProductsCheck)
             } else {
-                fetch("http://api.valantis.store:40000/",
+                fetch("https://api.valantis.store:41000/",
             { method: 'POST',
             headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
             body: JSON.stringify( {"action": "get_ids",
@@ -48,7 +48,7 @@ const Main = (props) => {
             })
             .then( data => {
                 // dispatch( updateID(data.result) );
-                return fetch("http://api.valantis.store:40000/",
+                return fetch("https://api.valantis.store:41000/",
                        { method: 'POST',
                        headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
                        body: JSON.stringify( {"action": "get_items",

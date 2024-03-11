@@ -34,7 +34,7 @@ export default function Filter() {
 
     useEffect(() => {
 
-            fetch("http://api.valantis.store:40000/",
+            fetch("https://api.valantis.store:41000/",
             { method: 'POST',
             headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
             body: JSON.stringify( {"action": "get_fields",
@@ -48,7 +48,7 @@ export default function Filter() {
             })
             .then(data => {
                 setBrand(data.result)
-                return fetch("http://api.valantis.store:40000/",
+                return fetch("https://api.valantis.store:41000/",
                        { method: 'POST',
                          headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
                          body: JSON.stringify( {"action": "get_fields",
@@ -94,7 +94,7 @@ export default function Filter() {
         setBrandName(eo.target.value);
 
         if(!(eo.target.value === "All")) {
-            fetch("http://api.valantis.store:40000/",
+            fetch("https://api.valantis.store:41000/",
             { method: 'POST',
               headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
               body: JSON.stringify( { "action": "filter",
@@ -154,7 +154,7 @@ export default function Filter() {
         setPriceName(eo.target.value);
 
         if(!(eo.target.value === "Not selected")) {
-            fetch("http://api.valantis.store:40000/",
+            fetch("https://api.valantis.store:41000/",
             { method: 'POST',
               headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
               body: JSON.stringify( { "action": "filter",
@@ -215,7 +215,7 @@ export default function Filter() {
         setName(eo.target.value);
 
         if(!(eo.target.value === "")) {
-            fetch("http://api.valantis.store:40000/",
+            fetch("https://api.valantis.store:41000/",
             { method: 'POST',
               headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
               body: JSON.stringify( { "action": "filter",
