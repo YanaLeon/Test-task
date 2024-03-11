@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export const PageProducts = () => {
     let navigate = useNavigate();
-    let uri = "/:1";
+    let uri = "/Test-task/:1";
 
     useEffect(() => {
 
