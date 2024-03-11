@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/:1/static/css/main.96e180ef.css",
+    "main.js": "/:1/static/js/main.5fb37166.js",
+    "static/js/453.63f6b601.chunk.js": "/:1/static/js/453.63f6b601.chunk.js",
+    "static/media/Uvelir.jpeg": "/:1/static/media/Uvelir.a1690ea64a4426453a76.jpeg",
+    "index.html": "/:1/index.html",
+    "main.96e180ef.css.map": "/:1/static/css/main.96e180ef.css.map",
+    "main.5fb37166.js.map": "/:1/static/js/main.5fb37166.js.map",
+    "453.63f6b601.chunk.js.map": "/:1/static/js/453.63f6b601.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96e180ef.css",
+    "static/js/main.5fb37166.js"
+  ]
+}
