@@ -1,7 +1,7 @@
 {
   "name": "test-task",
   "version": "0.1.0",
-  "homepage": "https://yanaleon.github.io/Test-task/Test-task/",
+  "homepage": "https://yanaleon.github.io/Test-task/:1",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
