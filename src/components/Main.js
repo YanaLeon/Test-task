@@ -6,13 +6,8 @@ import Product from "./Product.js";
 import './Main.css';
 import {PagesLinks} from "./PagesLinks.js";
 import {useParams} from "react-router-dom";
-// import Filter from './Filter.js';
 
-import { updateID} from "../redux/productsSlice.js";
-
-const Main = (props) => {
-
-    const dispatch = useDispatch();
+const Main = () => {
 
     let params = useParams();
     let num;
@@ -47,7 +42,6 @@ const Main = (props) => {
                     return response.json();
             })
             .then( data => {
-                // dispatch( updateID(data.result) );
                 return fetch("https://api.valantis.store:41000/",
                        { method: 'POST',
                        headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
@@ -91,7 +85,7 @@ const Main = (props) => {
 
     return (
         <div>
-            <div>{productsJSX}</div>
+            <div className="wrapper-main">{productsJSX}</div>
             <PagesLinks />
         </div>
     );

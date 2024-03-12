@@ -6,3 +6,10 @@
 .ActivePageLink {
     font-weight: bold;
 }
+
+div.wrapper-main {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

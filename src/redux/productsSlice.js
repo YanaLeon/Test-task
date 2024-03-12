@@ -31,6 +31,7 @@ export const productsSlice = createSlice({
         } else {
             state.idProcductCheck = action.payload;
         }
+        console.log(state.idProcductCheck)
     },
 
 

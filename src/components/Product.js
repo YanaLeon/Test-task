@@ -9,9 +9,9 @@ const Product = ({info, index}) => {
 
   return (
       <div className="Product">
-        <p>Название: {info.product}</p>
-        <p>Бренд: {info.brand || "отсутствует"}</p>
-        <p>Цена: {info.price}&euro;</p>
+        <p><span className="text">Название:</span> {info.product}</p>
+        <p><span className="text">Бренд:</span> {info.brand || "отсутствует"}</p>
+        <p><span className="text">Цена:</span> {info.price}&euro;</p>
       </div>
   )
 }

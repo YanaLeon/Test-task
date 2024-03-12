@@ -31,6 +31,9 @@ export default function Filter() {
     const [idBrand, setIDBrand] = useState([]);
     const [idPrice, setIDPrice] = useState([]);
     const [idName, setIDName] = useState([]);
+    const [copyIDBrand, setCopyIDBrand] = useState([]);
+    const [copyIDPrice, setCopyIDPrice] = useState([]);
+    const [copyIDName, setCopyIDName] = useState([]);
 
     useEffect(() => {
 
@@ -109,34 +112,23 @@ export default function Filter() {
             .then(data => {
                 // setIDBrand(data.result);
                 let brand = data.result;
-                if(!(priceName === "Not selected")) {
+                if((!(priceName === "Not selected")) || (!(name === ""))) {
+                    let id = [...idPrice, ...idName]
                     brand = brand.filter(element => {
-                        return idPrice.includes(element)
+                        return id.includes(element)
                     })
                     if (brand.length === 0) {
                         dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
                     } else {
                         dispatch( updateIDProductCheck(brand) );
                         setIDBrand(brand);
+                        setIDPrice(brand);
+                        setIDName(brand);
                     }
                 } else {
-                    dispatch( updateIDProductCheck([...data.result, ...idPrice, ...idName]) ); // рповерить надо указывать idPrice
-                    setIDBrand(data.result);
-                }
-
-                if (!(name === "")) {
-                    brand = brand.filter(element => {
-                        return idName.includes(element)
-                    })
-                    if (brand.length === 0) {
-                        dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
-                    } else {
-                        dispatch( updateIDProductCheck(brand) );
-                        setIDBrand(brand);
-                    }
-                } else {
-                    dispatch( updateIDProductCheck([...data.result, ...idPrice, ...idName]) ); // рповерить надо указывать idPrice
-                    setIDBrand(data.result);
+                    dispatch( updateIDProductCheck(data.result) ); // рповерить надо указывать idPrice
+                    setCopyIDBrand(data.result);
+                    setIDBrand(data.result)
                 }
             })
             .catch( error => {
@@ -145,9 +137,8 @@ export default function Filter() {
             });
         } else {
             setIDBrand([]);
-            dispatch( updateIDProductCheck([...idPrice, ...idName]) );
+            dispatch( updateIDProductCheck([...copyIDPrice, ...copyIDName]) );
         }
-        console.log(idBrand)
     };
 
     function filterPrice (eo) {
@@ -167,35 +158,24 @@ export default function Filter() {
                     return response.json();
             })
             .then(data => {
-                setIDPrice(data.result)
+                // setIDPrice(data.result)
                 let price = data.result;
-                if(!(brandName === "All")) {
+                if((!(brandName === "All")) || (!(name === ""))) {
+                    let id = [...idBrand, ...idName]
                     price = price.filter(element => {
-                        return idBrand.includes(element)
+                        return id.includes(element)
                     })
                     if (price.length === 0) {
                         dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
                     } else {
                         dispatch( updateIDProductCheck(price) );
+                        setIDBrand(price);
                         setIDPrice(price);
+                        setIDName(price);
                     }
                 } else {
-                    dispatch( updateIDProductCheck([...data.result, ...idBrand, idName]) );
-                    setIDPrice(data.result)
-                }
-                
-                if (!(name === "")) {
-                    price = price.filter(element => {
-                        return idName.includes(element)
-                    })
-                    if (price.length === 0) {
-                        dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
-                    } else {
-                        dispatch( updateIDProductCheck(price) );
-                        setIDPrice(price);
-                    }
-                } else {
-                    dispatch( updateIDProductCheck([...data.result, ...idBrand, idName]) );
+                    dispatch( updateIDProductCheck(data.result) );
+                    setCopyIDPrice(data.result)
                     setIDPrice(data.result)
                 }
             })
@@ -204,11 +184,9 @@ export default function Filter() {
                 setDataLoadError("HTTP error "+error.message);
             });
         } else {
-            console.log(idBrand, idPrice, [...idBrand, ...idName])
             setIDPrice([])
-            dispatch( updateIDProductCheck([...idBrand, ...idName]) );
+            dispatch( updateIDProductCheck([...copyIDBrand, ...copyIDName]) );
         }
-        console.log(idPrice)
     };
 
     function filterName (eo) {
@@ -228,35 +206,23 @@ export default function Filter() {
                     return response.json();
             })
             .then(data => {
-                 setIDName(data.result)
                  let name = data.result;
-                 if(!(brandName === "All")) {
-                      name = name.filter(element => {
-                         return idBrand.includes(element)
+                 if((!(brandName === "All")) || (!(priceName === "Not selected"))) {
+                    let id = [...idBrand, ...idName];
+                    name = name.filter(element => {
+                         return id.includes(element)
                     })
                     if (name.length === 0) {
                         dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
                     } else {
                         dispatch( updateIDProductCheck(name) );
+                        setIDBrand(name);
+                        setIDPrice(name);
                         setIDName(name);
                     }
                 } else {
-                    dispatch( updateIDProductCheck([...idBrand, ...idPrice, ...data.result]) );
-                    setIDName(data.result)
-                }
-                
-                if (!(priceName === "Not selected")) {
-                    name = name.filter(element => {
-                        return idPrice.includes(element)
-                   })
-                   if (name.length === 0) {
-                       dispatch( updateIDProductCheck("Нет элементов, удовлетворяющих запросу") );
-                   } else {
-                       dispatch( updateIDProductCheck(name) );
-                       setIDName(name);
-                   }
-                } else {
-                    dispatch( updateIDProductCheck([...idBrand, ...idPrice, ...data.result]) );
+                    dispatch( updateIDProductCheck(data.result) );
+                    setCopyIDName(data.result)
                     setIDName(data.result)
                 }
             })
@@ -266,9 +232,8 @@ export default function Filter() {
             });
         } else {
             setIDName([])
-            dispatch( updateIDProductCheck([...idBrand, ...idPrice]) );
+            dispatch( updateIDProductCheck([...copyIDBrand, ...idPrice]) );
         }
-        console.log(idName)
     };
 
 
@@ -296,119 +261,3 @@ export default function Filter() {
     </div>
   )
 }
-
-// function filterBrand (eo) {
-//     setBrandName(eo.target.value);
-// 
-//     if(!(eo.target.value === "All")) {
-//         fetch("http://api.valantis.store:40000/",
-//         { method: 'POST',
-//           headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
-//           body: JSON.stringify( { "action": "filter",
-//                                   "params": {"brand": eo.target.value}} )
-//         })
-//         .then( response => {
-//             if (!response.ok) {
-//                 throw new Error("fetch error " + response.status);
-//             } else
-//                 return response.json();
-//         })
-//         .then(data => {
-//             setIDBrand(data.result);
-//             let brand = data.result;
-//             if(!(priceName === "Not selected")) {
-//                 return fetch("http://api.valantis.store:40000/",
-//                             { method: 'POST',
-//                             headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) },
-//                             body: JSON.stringify( { "action": "filter",
-//                                                     "params": {"price": Number(priceName)}} )
-//                 })
-//                 .then( response => {
-//                     if (!response.ok) {
-//                         throw new Error("fetch error " + response.status);
-//                     } else
-//                     return response.json();
-//                 })
-//                 .then(data => {
-//                     data.result = data.result.filter(element => {
-//                         console.log(brand.includes('91a4056d-462d-4469-b97d-1d442d1e2fbc'), element, brand)
-//                         return brand.includes(element)
-//                     })
-//                     dispatch( updateIDProductCheck(data.result) );
-//                 })
-//                 .catch( error => {
-//                     setDataLoadState(3);
-//                     setDataLoadError("HTTP error "+error.message);
-//                 });
-//         } else {
-//             dispatch( updateIDProductCheck([...data.result, ...idPrice]) );
-//         }
-//     })
-//     .catch( error => {
-//             setDataLoadState(3);
-//             setDataLoadError("HTTP error "+error.message);
-//     });
-//     } else {
-//         setIDBrand([]);
-//         dispatch( updateIDProductCheck([null, ...idPrice]) );
-//     }
-//     
-// };
-// 
-// function filterPrice (eo) {
-//     // dispatch( checkPrice(eo.target.value) );
-//     setPriceName(eo.target.value);
-// 
-//     if(!(eo.target.value === "Not selected")) {
-//         fetch("http://api.valantis.store:40000/",
-//         { method: 'POST', 
-//         headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) }, 
-//         body: JSON.stringify( { "action": "filter",
-//                                 "params": {"price": Number(eo.target.value)}} ) 
-//     })
-//     .then( response => {
-//             if (!response.ok) {
-//                 throw new Error("fetch error " + response.status);
-//             } else
-//                 return response.json();
-//     })
-//     .then(data => {
-//             setIDPrice(data.result)
-//             // dispatch( updateIDProductCheck(data.result) );
-//             let price = data.result;
-//             if(!(brandName === "All")) {
-//                 return fetch("http://api.valantis.store:40000/",
-//                 { method: 'POST', 
-//                 headers: { 'Content-Type': 'application/json', "X-Auth": md5(`Valantis_${new Date().toISOString().slice(0, 10).split('-').join('')}`) }, 
-//                 body: JSON.stringify( { "action": "filter",
-//                                         "params": {"brand": brandName}} )
-//                 })
-//                 .then( response => {
-//                     if (!response.ok) {
-//                         throw new Error("fetch error " + response.status);
-//                     } else
-//                     return response.json();
-//                 })
-//                 .then(data => {
-//                     data.result = data.result.filter(element => {
-//                         return price.includes(element)
-//                     })
-//                     dispatch( updateIDProductCheck(data.result) );
-//                 })
-//                 .catch( error => {
-//                     setDataLoadState(3);
-//                     setDataLoadError("HTTP error "+error.message);
-//         });
-//         } else {
-//             dispatch( updateIDProductCheck([...data.result, ...idBrand]) );
-//         }
-//     })
-//     .catch( error => {
-//             setDataLoadState(3);
-//             setDataLoadError("HTTP error "+error.message);
-//     });
-//     } else {
-//         setIDPrice([])
-//         dispatch( updateIDProductCheck([...idBrand, null]) );
-//     }
-// };
